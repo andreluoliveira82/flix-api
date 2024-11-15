@@ -24,6 +24,8 @@ INSTALLED_APPS = [
 
     # my apps
     'genres',
+    'actors',
+    'movies',
 
     # thirth apps
 
