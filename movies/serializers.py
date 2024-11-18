@@ -21,11 +21,11 @@ class MovieModelSerializer(serializers.ModelSerializer):
         """
         calcula a classificação média do filme com base nas avaliações (reviews)
         """
-        rate = obj.reviews.aggregate(Avg('stars'))['stars__avg']
+        rate = obj.reviews.aggregate(Avg("stars"))["stars__avg"]
 
         if rate:
-            return round(rate, 2)
-        
+            return round(rate, 1)
+
         return None
 
         # if reviews:
@@ -44,7 +44,7 @@ class MovieModelSerializer(serializers.ModelSerializer):
         """
         return obj.reviews.count() if obj.reviews else 0
 
-    # validates
+    # ============================ validates ===================================
     # por definição todas as validações devem começar com validate_ seguido do nome do campo
 
     def validate_title(self, value):
