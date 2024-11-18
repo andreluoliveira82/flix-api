@@ -30,7 +30,7 @@ class GlobalDefaultPermission(permissions.BasePermission):
             action = self.__get_action_sufix(method)
             model_name = view.queryset.model._meta.model_name
             return f"{app_label}.{action}_{model_name}"
-        except:
+        except Exception:
             return None
 
     def __get_action_sufix(self, method) -> str:

@@ -5,7 +5,6 @@ from genres.models import Genre
 from genres.serializers import GenreModelSerializer
 
 
-
 class GenreCreateListView(generics.ListCreateAPIView):
     permission_classes = (
         IsAuthenticated,

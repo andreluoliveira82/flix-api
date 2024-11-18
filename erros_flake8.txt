@@ -1,0 +1,2 @@
+./core/urls.py:7:1: W293 blank line contains whitespace
+./core/urls.py:18:1: W293 blank line contains whitespace

@@ -10,3 +10,8 @@ dependencies = [
     "djangorestframework-simplejwt>=5.3.1",
     "djangorestframework>=3.15.2",
 ]
+
+[dependency-groups]
+dev = [
+    "flake8>=7.1.1",
+]
