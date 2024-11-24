@@ -3,7 +3,11 @@ from rest_framework import generics, views, response, status
 from rest_framework.permissions import IsAuthenticated
 from core.permissions import GlobalDefaultPermission
 from movies.models import Movie
-from movies.serializers import MovieModelSerializer
+from movies.serializers import (
+    MovieModelSerializer,
+    MovieListDetailSerializer,
+    MovieStatsSerializer,
+)
 from reviews.models import Review
 
 
@@ -15,7 +19,16 @@ class MovieCreateListView(generics.ListCreateAPIView):
         GlobalDefaultPermission,
     )
     queryset = Movie.objects.all()
-    serializer_class = MovieModelSerializer
+    # serializer_class = MovieModelSerializer
+    #
+    # Este trecho acima (comentado) seria é o serializer padrão,
+    # mas vamos usar o metodo abaixo para mudar o comportamento de acordo com o request
+    # e assim formatar os dados de acordo com o request
+
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return MovieListDetailSerializer
+        return MovieModelSerializer
 
 
 class MovieRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
