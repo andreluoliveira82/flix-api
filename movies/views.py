@@ -3,10 +3,8 @@ from rest_framework import generics, views, response, status
 from rest_framework.permissions import IsAuthenticated
 from core.permissions import GlobalDefaultPermission
 from movies.models import Movie
-from movies.serializers import (
+from .serializers import (
     MovieModelSerializer,
-    MovieListDetailSerializer,
-    MovieStatsSerializer,
 )
 from reviews.models import Review
 
